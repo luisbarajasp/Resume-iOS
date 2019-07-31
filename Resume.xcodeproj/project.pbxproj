@@ -19,6 +19,7 @@
 		A06917E522F0F3F100B9AE73 /* ContentVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917E422F0F3F100B9AE73 /* ContentVIew.swift */; };
 		A06917E722F1226F00B9AE73 /* EducationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */; };
 		A06917E922F1245400B9AE73 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917E822F1245400B9AE73 /* School.swift */; };
+		A06917EB22F14CC800B9AE73 /* EducationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A06917E422F0F3F100B9AE73 /* ContentVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentVIew.swift; sourceTree = "<group>"; };
 		A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCollectionCell.swift; sourceTree = "<group>"; };
 		A06917E822F1245400B9AE73 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				A06917DE22F0D78000B9AE73 /* HeaderView.swift */,
 				A06917E222F0E38500B9AE73 /* HeaderButton.swift */,
 				A06917E422F0F3F100B9AE73 /* ContentVIew.swift */,
+				A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */,
 				A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */,
 			);
 			path = Views;
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06917DF22F0D78000B9AE73 /* HeaderView.swift in Sources */,
+				A06917EB22F14CC800B9AE73 /* EducationCollectionView.swift in Sources */,
 				A06917E122F0E04C00B9AE73 /* APIService.swift in Sources */,
 				A06917E522F0F3F100B9AE73 /* ContentVIew.swift in Sources */,
 				A06917D922F0D20600B9AE73 /* Extension.swift in Sources */,

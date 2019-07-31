@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ContentView: UIView {
     
     var summary: String? {
         didSet {
@@ -18,7 +18,7 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
     
     var schools: [School] = [] {
         didSet {
-            educationCollectionView.reloadData()
+            educationCollectionView.schools = schools
         }
     }
     
@@ -46,27 +46,7 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
         return label
     }()
     
-    let educationCellId = "educationCellId"
-    
-    lazy var educationCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 7.5
-        layout.minimumInteritemSpacing = 7.5
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
-        cv.dataSource = self
-        cv.showsHorizontalScrollIndicator = false
-        cv.showsVerticalScrollIndicator = false
-        cv.register(EducationCollectionCell.self, forCellWithReuseIdentifier: educationCellId)
-        cv.showsVerticalScrollIndicator = false
-        cv.backgroundColor = .white
-        cv.isPagingEnabled = false
-        cv.sizeToFit()
-        
-        cv.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        return cv
-    }()
+    let educationCollectionView = EducationCollectionView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,23 +69,5 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
         
         addSubview(educationCollectionView)
         educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 380))
-    }
-    
-    // MARK: - Collection View Methods
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return schools.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: educationCellId, for: indexPath) as! EducationCollectionCell
-        cell.school = schools[indexPath.row]
-        return cell
-    }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 150)
     }
 }
