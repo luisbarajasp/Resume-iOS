@@ -86,7 +86,7 @@ class HomeController: UIViewController {
         headerView.anchor(top: parentView.topAnchor, leading: parentView.leadingAnchor, bottom: nil, trailing: parentView.trailingAnchor, size: CGSize(width: 0, height: 325))
         
         parentView.addSubview(contentView)
-        contentView.anchor(top: headerView.bottomAnchor, leading: parentView.safeAreaLayoutGuide.leadingAnchor, bottom: parentView.safeAreaLayoutGuide.bottomAnchor, trailing: parentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20))
+        contentView.anchor(top: headerView.bottomAnchor, leading: parentView.safeAreaLayoutGuide.leadingAnchor, bottom: parentView.safeAreaLayoutGuide.bottomAnchor, trailing: parentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
     
     // MARK: - Alerts

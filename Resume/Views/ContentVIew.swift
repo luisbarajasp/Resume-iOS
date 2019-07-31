@@ -50,9 +50,8 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
     
     lazy var educationCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 7.5
+        layout.minimumInteritemSpacing = 7.5
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
@@ -61,7 +60,8 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
         cv.register(EducationCollectionCell.self, forCellWithReuseIdentifier: educationCellId)
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .white
-        cv.isPagingEnabled = true
+        cv.isPagingEnabled = false
+        cv.sizeToFit()
         
         cv.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -79,16 +79,16 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
     
     func setUpViews() {
         addSubview(summaryTitleLabel)
-        summaryTitleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+        summaryTitleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
         addSubview(summaryLabel)
-        summaryLabel.anchor(top: summaryTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+        summaryLabel.anchor(top: summaryTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
         addSubview(educationTitleLabel)
-        educationTitleLabel.anchor(top: summaryLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
+        educationTitleLabel.anchor(top: summaryLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
         
         addSubview(educationCollectionView)
-        educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 300))
+        educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 380))
     }
     
     // MARK: - Collection View Methods
@@ -106,6 +106,6 @@ class ContentView: UIView, UICollectionViewDelegate, UICollectionViewDataSource,
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 2 - 5, height: 300)
+        return CGSize(width: collectionView.bounds.width, height: 150)
     }
 }
