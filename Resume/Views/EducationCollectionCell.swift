@@ -24,7 +24,6 @@ class EducationCollectionCell: UICollectionViewCell {
             var colorBottom = UIColor(red: 104, green: 142, blue: 247).cgColor
             
             if let name = school?.name, name != "Czech Technical University" {
-                print(name)
                 colorTop =  UIColor(red: 74, green: 73, blue: 171).cgColor
                 colorBottom = UIColor(red: 58, green: 57, blue: 143).cgColor
             }

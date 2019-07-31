@@ -20,6 +20,9 @@
 		A06917E722F1226F00B9AE73 /* EducationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */; };
 		A06917E922F1245400B9AE73 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917E822F1245400B9AE73 /* School.swift */; };
 		A06917EB22F14CC800B9AE73 /* EducationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */; };
+		A06917ED22F14EED00B9AE73 /* SkillsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */; };
+		A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */; };
+		A06917F122F153BB00B9AE73 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917F022F153BB00B9AE73 /* Skill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCollectionCell.swift; sourceTree = "<group>"; };
 		A06917E822F1245400B9AE73 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationCollectionView.swift; sourceTree = "<group>"; };
+		A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionView.swift; sourceTree = "<group>"; };
+		A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionCell.swift; sourceTree = "<group>"; };
+		A06917F022F153BB00B9AE73 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,8 @@
 				A06917E422F0F3F100B9AE73 /* ContentVIew.swift */,
 				A06917EA22F14CC800B9AE73 /* EducationCollectionView.swift */,
 				A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */,
+				A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */,
+				A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A06917E822F1245400B9AE73 /* School.swift */,
+				A06917F022F153BB00B9AE73 /* Skill.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,8 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06917DF22F0D78000B9AE73 /* HeaderView.swift in Sources */,
+				A06917F122F153BB00B9AE73 /* Skill.swift in Sources */,
 				A06917EB22F14CC800B9AE73 /* EducationCollectionView.swift in Sources */,
 				A06917E122F0E04C00B9AE73 /* APIService.swift in Sources */,
+				A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */,
+				A06917ED22F14EED00B9AE73 /* SkillsCollectionView.swift in Sources */,
 				A06917E522F0F3F100B9AE73 /* ContentVIew.swift in Sources */,
 				A06917D922F0D20600B9AE73 /* Extension.swift in Sources */,
 				A06917E922F1245400B9AE73 /* School.swift in Sources */,

@@ -22,6 +22,12 @@ class ContentView: UIView {
         }
     }
     
+    var skills: [Skill] = [] {
+        didSet {
+            skillsCollectionView.skills = skills
+        }
+    }
+    
     let summaryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
@@ -48,6 +54,16 @@ class ContentView: UIView {
     
     let educationCollectionView = EducationCollectionView()
     
+    let skillsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+        label.text = "Skills"
+        label.sizeToFit()
+        return label
+    }()
+    
+    let skillsCollectionView = SkillsCollectionView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -68,6 +84,9 @@ class ContentView: UIView {
         educationTitleLabel.anchor(top: summaryLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
         
         addSubview(educationCollectionView)
-        educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 380))
+        educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 330))
+        
+        addSubview(skillsTitleLabel)
+        skillsTitleLabel.anchor(top: educationCollectionView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
     }
 }

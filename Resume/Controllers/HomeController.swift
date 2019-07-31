@@ -66,6 +66,16 @@ class HomeController: UIViewController {
         
         contentView.schools = schools
         
+        var skills: [Skill] = []
+        
+        guard let skillsJsonArray = resume!["Skills"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
+        
+        for skillJson in skillsJsonArray {
+            skills.append(Skill(_name: skillJson["name"] as! String, _skills: skillJson["items"] as! [String]))
+        }
+        
+        contentView.skills = skills
+        
     }
     
     func setUpViews() {
