@@ -12,7 +12,10 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     
     var jobs: [Job] = [] {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.collectionView.layoutIfNeeded()
+            }
         }
     }
     
@@ -37,7 +40,8 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
         cv.register(EmploymentCollectionCell.self, forCellWithReuseIdentifier: cellId)
         cv.backgroundColor = .white
         cv.isScrollEnabled = true
-        cv.isPagingEnabled = true
+        cv.isPagingEnabled = false
+        cv.showsHorizontalScrollIndicator = false
         
         cv.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
@@ -49,7 +53,7 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
         employmentTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        collectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 150))
         
         contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
     }

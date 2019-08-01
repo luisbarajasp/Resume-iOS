@@ -12,7 +12,12 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
     
     var skills: [Skill] = [] {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                
+                self.collectionView.layoutIfNeeded()
+            }
+            
             
         }
     }
@@ -29,11 +34,11 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
     
     let skillsHeaderId = "skillsHeaderId"
     
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: DynamicHeightCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let cv = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
         cv.showsHorizontalScrollIndicator = false
@@ -60,7 +65,7 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
         skillsTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        collectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 565))
         
         contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
     }
@@ -80,7 +85,6 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsCellId, for: indexPath) as! SkillsCollectionCell
-        
         
         cell.skill = skills[indexPath.section].skills[indexPath.row]
         
