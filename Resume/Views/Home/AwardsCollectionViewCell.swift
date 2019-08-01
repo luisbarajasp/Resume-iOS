@@ -21,10 +21,16 @@ class AwardsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
         }
     }
     
+    var title: String = "" {
+        didSet {
+            awardTitleLabel.text = title
+        }
+    }
+    
     let awardTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.text = "Award"
+        
         label.sizeToFit()
         return label
     }()

@@ -9,14 +9,12 @@
 import UIKit
 
 class School {
-    var imageLink: String?
     var name: String?
     var date: String?
     var degree: String?
     var notes: String?
     
-    init(_imageLink: String, _name: String, _date: String, _degree: String, _notes: String) {
-        imageLink = _imageLink
+    init(_name: String, _date: String, _degree: String, _notes: String) {
         name = _name
         date = _date
         degree = _degree

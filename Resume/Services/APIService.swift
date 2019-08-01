@@ -10,7 +10,7 @@ import Foundation
 
 class APIService: NSObject {
     lazy var endPoint: String = {
-        return "https://gist.githubusercontent.com/luisbarajasp/19edb2a83748268c916aef9a4e5cdba0/raw/75618884abedaa5f9e3bdec12dfa1501e024d0bc/cv.json"
+        return "https://gist.githubusercontent.com/luisbarajasp/19edb2a83748268c916aef9a4e5cdba0/raw/d2e2266c8acb4abee3f90f1bc1eae401932ceb74/cv.json"
     }()
     
     func getDataWith(completion: @escaping (Result<[String: AnyObject]>) -> Void) {

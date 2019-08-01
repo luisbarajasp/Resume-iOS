@@ -23,6 +23,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let employmentViewId = "employmentViewId"
     let projectsViewId = "projectsViewId"
     let awardsViewId = "awardsViewId"
+    let languagesViewId = "languagesViewId"
     
     private var lastContentOffset: CGFloat = 0
     
@@ -37,6 +38,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
         
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
+        
         cv.register(HeaderViewCell.self, forCellWithReuseIdentifier: headerViewId)
         cv.register(SummaryViewCell.self, forCellWithReuseIdentifier: summaryViewId)
         cv.register(EducationCollectionViewCell.self, forCellWithReuseIdentifier: educationViewId)
@@ -44,6 +47,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cv.register(EmploymentCollectionViewCell.self, forCellWithReuseIdentifier: employmentViewId)
         cv.register(ProjectsCollectionViewCell.self, forCellWithReuseIdentifier: projectsViewId)
         cv.register(AwardsCollectionViewCell.self, forCellWithReuseIdentifier: awardsViewId)
+        cv.register(LanguagesCollectionViewCell.self, forCellWithReuseIdentifier: languagesViewId)
         
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .white
@@ -130,6 +134,9 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        var c: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath)
+        
         switch indexPath.row {
             case 0:
             // Header
@@ -138,13 +145,13 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
                 cell.contact = contactJsonArray
                 
-                return cell
+                c = cell
             case 1:
             // Summary
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: summaryViewId, for: indexPath) as! SummaryViewCell
                 cell.summary = resume!["Summary"] as? String
                 
-                return cell
+                c = cell
                 
                 
             
@@ -157,12 +164,12 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 var schools: [School] = []
                 
                 for schoolJson in schoolsJsonArray {
-                    schools.append(School(_imageLink: schoolJson["imageLink"] as! String, _name: schoolJson["name"] as! String, _date: schoolJson["date"] as! String, _degree: schoolJson["degree"] as! String, _notes: schoolJson["notes"] as! String))
+                    schools.append(School(_name: schoolJson["name"] as! String, _date: schoolJson["date"] as! String, _degree: schoolJson["degree"] as! String, _notes: schoolJson["notes"] as! String))
                 }
                 
                 cell.schools = schools
                 
-                return cell
+                c = cell
             case 3:
                 // Employment
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: employmentViewId, for: indexPath) as! EmploymentCollectionViewCell
@@ -179,7 +186,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 cell.jobs = jobs
                 
-                return cell
+                c = cell
             case 4:
                 // Projects
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectsViewId, for: indexPath) as! ProjectsCollectionViewCell
@@ -196,7 +203,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 cell.projects = projects
                 
-                return cell
+                c = cell
             case 5:
             // Skills
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsViewId, for: indexPath) as! SkillsCollectionViewCell
@@ -211,7 +218,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 cell.skills = skills
                 
-                return cell
+                c = cell
             case 6:
             // Awards
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: awardsViewId, for: indexPath) as! AwardsCollectionViewCell
@@ -224,36 +231,47 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     awards.append(Award(_name: awardJson["name"] as! String, _date: awardJson["date"] as! String, _description: awardJson["description"] as! String))
                 }
                 
+                cell.title = "Awards"
                 cell.awards = awards
                 
-                return cell
+                c = cell
             case 7:
             // Volunteering
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: awardsViewId, for: indexPath) as! AwardsCollectionViewCell
                 
-                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-                cell!.contact = contactJsonArray
+                guard let awardsJsonArray = resume!["Volunteering"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
                 
-                return cell!
+                var awards: [Award] = []
+                
+                for awardJson in awardsJsonArray {
+                    awards.append(Award(_name: awardJson["name"] as! String, _date: awardJson["date"] as! String, _description: awardJson["description"] as! String))
+                }
+                
+                cell.title = "Volunteering"
+                cell.awards = awards
+                
+                c = cell
             case 8:
             // Languages
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: languagesViewId, for: indexPath) as! LanguagesCollectionViewCell
                 
-                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-                cell!.contact = contactJsonArray
+                var languages: [Language] = []
                 
-                return cell!
+                guard let languagesJsonArray = resume!["Languages"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                for languageJson in languagesJsonArray {
+                    languages.append(Language(_name: languageJson["name"] as! String, _level: languageJson["level"] as! String))
+                }
+                
+                cell.languages = languages
+                
+                c = cell
             default:
             break
             // Nothing
             
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
-        
-        guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-        cell!.contact = contactJsonArray
-        
-        return cell!
+        return c
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

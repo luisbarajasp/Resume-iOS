@@ -37,6 +37,8 @@
 		A0951DB822F376FF00ED2996 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB722F376FF00ED2996 /* Award.swift */; };
 		A0951DBA22F3776A00ED2996 /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */; };
 		A0951DBC22F377B100ED2996 /* AwardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */; };
+		A0951DBE22F3808F00ED2996 /* LanguagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DBD22F3808F00ED2996 /* LanguagesCollectionViewCell.swift */; };
+		A0951DC022F380BD00ED2996 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DBF22F380BD00ED2996 /* Language.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		A0951DB722F376FF00ED2996 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCollectionCell.swift; sourceTree = "<group>"; };
+		A0951DBD22F3808F00ED2996 /* LanguagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0951DBF22F380BD00ED2996 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 				A0951DA322F2A25D00ED2996 /* Job.swift */,
 				A0951DAF22F3726800ED2996 /* Project.swift */,
 				A0951DB722F376FF00ED2996 /* Award.swift */,
+				A0951DBF22F380BD00ED2996 /* Language.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				A0951DB322F3740300ED2996 /* ProjectCollectionCell.swift */,
 				A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */,
 				A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */,
+				A0951DBD22F3808F00ED2996 /* LanguagesCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 				A06917DF22F0D78000B9AE73 /* HeaderViewCell.swift in Sources */,
 				A0951DB422F3740300ED2996 /* ProjectCollectionCell.swift in Sources */,
 				A06917F122F153BB00B9AE73 /* Skill.swift in Sources */,
+				A0951DC022F380BD00ED2996 /* Language.swift in Sources */,
 				A0951DAA22F357B900ED2996 /* NavigationView.swift in Sources */,
 				A06917EB22F14CC800B9AE73 /* EducationCollectionViewCell.swift in Sources */,
 				A0951DB622F374A200ED2996 /* ProjectController.swift in Sources */,
@@ -288,6 +295,7 @@
 				A0951DA622F2C3A800ED2996 /* SummaryViewCell.swift in Sources */,
 				A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */,
 				A0951DB022F3726800ED2996 /* Project.swift in Sources */,
+				A0951DBE22F3808F00ED2996 /* LanguagesCollectionViewCell.swift in Sources */,
 				A0951DA422F2A25D00ED2996 /* Job.swift in Sources */,
 				A0951DAC22F362A500ED2996 /* JobController.swift in Sources */,
 				A06917C622F0D19600B9AE73 /* AppDelegate.swift in Sources */,
