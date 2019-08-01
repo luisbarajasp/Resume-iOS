@@ -76,8 +76,6 @@ class HomeController: UIViewController {
         
         contentView.skills = skills
         
-        print(scrollView.contentSize)
-        
     }
     
     func setUpViews() {
@@ -99,6 +97,8 @@ class HomeController: UIViewController {
         
         parentView.addSubview(contentView)
         contentView.anchor(top: headerView.bottomAnchor, leading: parentView.safeAreaLayoutGuide.leadingAnchor, bottom: parentView.safeAreaLayoutGuide.bottomAnchor, trailing: parentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+        
+        contentView.setContentCompressionResistancePriority(.required, for: .vertical)
     }
     
     // MARK: - Alerts
@@ -110,6 +110,11 @@ class HomeController: UIViewController {
         }
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        // FIX: fixed height for contentsize scrollview, this is a nasty way to solve the error with scrollview not growing to content
+        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width, height: 2000)
     }
 
 }
