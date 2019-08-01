@@ -21,6 +21,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let skillsViewId = "skillsViewId"
     let educationViewId = "educationViewId"
     let employmentViewId = "employmentViewId"
+    let projectsViewId = "projectsViewId"
     
     private var lastContentOffset: CGFloat = 0
     
@@ -40,6 +41,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cv.register(EducationCollectionViewCell.self, forCellWithReuseIdentifier: educationViewId)
         cv.register(SkillsCollectionViewCell.self, forCellWithReuseIdentifier: skillsViewId)
         cv.register(EmploymentCollectionViewCell.self, forCellWithReuseIdentifier: employmentViewId)
+        cv.register(ProjectsCollectionViewCell.self, forCellWithReuseIdentifier: projectsViewId)
         
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .white
@@ -160,22 +162,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 return cell
             case 3:
-            // Skills
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsViewId, for: indexPath) as! SkillsCollectionViewCell
-                
-                var skills: [Skill] = []
-                
-                guard let skillsJsonArray = resume!["Skills"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-                
-                for skillJson in skillsJsonArray {
-                    skills.append(Skill(_name: skillJson["name"] as! String, _skills: skillJson["items"] as! [String]))
-                }
-                
-                cell.skills = skills
-                
-                return cell
-            case 4:
-            // Employment
+                // Employment
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: employmentViewId, for: indexPath) as! EmploymentCollectionViewCell
                 
                 var jobs: [Job] = []
@@ -191,14 +178,38 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 cell.jobs = jobs
                 
                 return cell
+            case 4:
+                // Projects
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: projectsViewId, for: indexPath) as! ProjectsCollectionViewCell
+                
+                var projects: [Project] = []
+                
+                guard let projectsJsonArray = resume!["Projects"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                for projectJson in projectsJsonArray {
+                    projects.append(Project(_name: projectJson["name"] as! String, _date: projectJson["date"] as! String, _description: projectJson["description"] as! String))
+                }
+                
+                cell.controller = self
+                
+                cell.projects = projects
+                
+                return cell
             case 5:
-            // Projects
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+            // Skills
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsViewId, for: indexPath) as! SkillsCollectionViewCell
                 
-                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-                cell!.contact = contactJsonArray
+                var skills: [Skill] = []
                 
-                return cell!
+                guard let skillsJsonArray = resume!["Skills"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                for skillJson in skillsJsonArray {
+                    skills.append(Skill(_name: skillJson["name"] as! String, _skills: skillJson["items"] as! [String]))
+                }
+                
+                cell.skills = skills
+                
+                return cell
             case 6:
             // Awards
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
@@ -261,6 +272,12 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let jobController = JobController()
         jobController.job = job
         navigationController?.pushViewController(jobController, animated: true)
+    }
+    
+    func didSelectProject(_ project: Project) {
+        let projectController = ProjectController()
+        projectController.project = project
+        navigationController?.pushViewController(projectController, animated: true)
     }
 
 }

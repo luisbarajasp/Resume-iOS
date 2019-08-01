@@ -123,6 +123,9 @@ class NavigationView: UIView {
         if let cont = controller as? JobController {
             cont.navigationBackPressed()
         }
+        if let cont = controller as? ProjectController {
+            cont.navigationBackPressed()
+        }
     }
     
     @objc

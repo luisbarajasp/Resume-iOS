@@ -1,20 +1,19 @@
 //
-//  EmploymentCollectionCell.swift
+//  ProjectCollectionCell.swift
 //  Resume
 //
-//  Created by Luis Eduardo Barajas Perez on 7/31/19.
+//  Created by Luis Eduardo Barajas Perez on 8/1/19.
 //  Copyright © 2019 Luis Barajas. All rights reserved.
 //
 
 import UIKit
 
-class EmploymentCollectionCell: UICollectionViewCell {
+class ProjectCollectionCell: UICollectionViewCell {
     
-    var job: Job? {
+    var project: Project? {
         didSet{
-            nameLabel.text = job?.name
-            companyLabel.text = job?.company
-            dateLabel.text = job?.date
+            nameLabel.text = project?.name
+            dateLabel.text = project?.date
         }
     }
     
@@ -48,13 +47,6 @@ class EmploymentCollectionCell: UICollectionViewCell {
         return label
     }()
     
-    let companyLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        label.sizeToFit()
-        return label
-    }()
-    
     let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -83,10 +75,7 @@ class EmploymentCollectionCell: UICollectionViewCell {
         cornerView.addSubview(nameLabel)
         nameLabel.anchor(top: cornerView.topAnchor, leading: cornerView.leadingAnchor, bottom: nil, trailing: cornerView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10), size: CGSize(width: 0, height: 45))
         
-        cornerView.addSubview(companyLabel)
-        companyLabel.anchor(top: nameLabel.bottomAnchor, leading: cornerView.leadingAnchor, bottom: nil, trailing: cornerView.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 10, bottom: 0, right: 10), size: CGSize(width: 0, height: 20))
-        
         cornerView.addSubview(dateLabel)
-        dateLabel.anchor(top: companyLabel.bottomAnchor, leading: cornerView.leadingAnchor, bottom: nil, trailing: cornerView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10), size: CGSize(width: 0, height: 16))
+        dateLabel.anchor(top: nameLabel.bottomAnchor, leading: cornerView.leadingAnchor, bottom: nil, trailing: cornerView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10), size: CGSize(width: 0, height: 16))
     }
 }

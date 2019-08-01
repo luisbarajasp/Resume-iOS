@@ -1,18 +1,18 @@
 //
-//  EmploymentCollectionVIew.swift
+//  ProjectsCollectionViewCell.swift
 //  Resume
 //
-//  Created by Luis Eduardo Barajas Perez on 7/31/19.
+//  Created by Luis Eduardo Barajas Perez on 8/1/19.
 //  Copyright © 2019 Luis Barajas. All rights reserved.
 //
 
 import UIKit
 
-class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ProjectsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var controller: HomeController!
     
-    var jobs: [Job] = [] {
+    var projects: [Project] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -23,10 +23,10 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     
     let cellId = "cellId"
     
-    let employmentTitleLabel: UILabel = {
+    let projectsTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.text = "Employment"
+        label.text = "Projects"
         label.sizeToFit()
         return label
     }()
@@ -39,7 +39,7 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
-        cv.register(EmploymentCollectionCell.self, forCellWithReuseIdentifier: cellId)
+        cv.register(ProjectCollectionCell.self, forCellWithReuseIdentifier: cellId)
         cv.backgroundColor = .white
         cv.isScrollEnabled = true
         
@@ -51,11 +51,11 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     }()
     
     override func setUpViews() {
-        contentView.addSubview(employmentTitleLabel)
-        employmentTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
+        contentView.addSubview(projectsTitleLabel)
+        projectsTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 150))
+        collectionView.anchor(top: projectsTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 130))
         
         contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
     }
@@ -63,15 +63,15 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     // MARK: - CollectionView Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return jobs.count
+        return projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? EmploymentCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProjectCollectionCell
         
-        cell!.job = jobs[indexPath.row]
+        cell.project = projects[indexPath.row]
         
-        return cell!
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -79,6 +79,7 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        controller.didSelectJob(jobs[indexPath.row])
+        controller.didSelectProject(projects[indexPath.row])
     }
 }
+
