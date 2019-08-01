@@ -44,14 +44,6 @@ class HeaderViewCell: SectionViewCell {
         return view
     }()
     
-    let backgroundImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "headerbg")
-        
-        
-        return iv
-    }()
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Luis Barajas"

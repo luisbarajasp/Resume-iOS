@@ -22,6 +22,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let educationViewId = "educationViewId"
     let employmentViewId = "employmentViewId"
     
+    private var lastContentOffset: CGFloat = 0
+    
     lazy var parentView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
@@ -47,6 +49,12 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         return cv
     }()
+    
+    let navigationView = NavigationView()
+    
+    var navigationViewTop: NSLayoutConstraint!
+    
+    var navigationViewBottom: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,18 +89,19 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         parentView.reloadData()
         
-        /*
-        
-        
-        
-        */
-        
     }
     
     func setUpViews() {
         
         view.addSubview(parentView)
         parentView.fillSuperview()
+        
+        view.addSubview(navigationView)
+        navigationView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, size: CGSize(width: 0, height: 100))
+        
+        navigationViewTop = navigationView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100)
+        
+        navigationViewTop.isActive = true
 
     }
     
@@ -221,6 +230,25 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell!.contact = contactJsonArray
         
         return cell!
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == parentView {
+            let contentOffsetY = scrollView.contentOffset.y
+            
+            if contentOffsetY < 200 {
+                navigationViewTop.constant = -100
+            }else{
+                navigationViewTop.constant = 0
+            }
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut], animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+            
+            // update the new position acquired
+            self.lastContentOffset = contentOffsetY
+        }
     }
 
 }

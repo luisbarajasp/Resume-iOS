@@ -29,6 +29,7 @@
 		A0951DA422F2A25D00ED2996 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA322F2A25D00ED2996 /* Job.swift */; };
 		A0951DA622F2C3A800ED2996 /* SummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA522F2C3A800ED2996 /* SummaryViewCell.swift */; };
 		A0951DA822F2C3D500ED2996 /* SectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */; };
+		A0951DAA22F357B900ED2996 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA922F357B900ED2996 /* NavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		A0951DA322F2A25D00ED2996 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		A0951DA522F2C3A800ED2996 /* SummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewCell.swift; sourceTree = "<group>"; };
 		A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewCell.swift; sourceTree = "<group>"; };
+		A0951DA922F357B900ED2996 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				A0951DA122F2A1CD00ED2996 /* EmploymentCollectionCell.swift */,
 				A0951DA522F2C3A800ED2996 /* SummaryViewCell.swift */,
 				A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */,
+				A0951DA922F357B900ED2996 /* NavigationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				A06917DF22F0D78000B9AE73 /* HeaderViewCell.swift in Sources */,
 				A06917F122F153BB00B9AE73 /* Skill.swift in Sources */,
+				A0951DAA22F357B900ED2996 /* NavigationView.swift in Sources */,
 				A06917EB22F14CC800B9AE73 /* EducationCollectionViewCell.swift in Sources */,
 				A06917E122F0E04C00B9AE73 /* APIService.swift in Sources */,
 				A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */,
