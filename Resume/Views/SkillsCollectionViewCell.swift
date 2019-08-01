@@ -90,6 +90,8 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
         
         cell.colors = cellColors[indexPath.section]
         
+        print("\(indexPath.section) \(skills[indexPath.section].skills[indexPath.row])")
+        
         return cell
     }
     

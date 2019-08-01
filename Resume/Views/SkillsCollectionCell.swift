@@ -18,16 +18,18 @@ class SkillsCollectionCell: UICollectionViewCell {
     
     var colors: [UIColor]? {
         didSet {
-            let colorTop =  colors![0].cgColor
-            let colorBottom = colors![1].cgColor
-            
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = [colorTop, colorBottom]
-            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-            gradientLayer.frame = self.bounds
-            
-            containerView.layer.insertSublayer(gradientLayer, at:0)
+            DispatchQueue.main.async {
+                let colorTop =  self.colors![0].cgColor
+                let colorBottom = self.colors![1].cgColor
+                
+                let gradientLayer = CAGradientLayer()
+                gradientLayer.colors = [colorTop, colorBottom]
+                gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+                gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+                gradientLayer.frame = self.bounds
+                
+                self.containerView.layer.insertSublayer(gradientLayer, at:0)
+            }
         }
     }
     
