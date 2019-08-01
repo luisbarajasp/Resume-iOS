@@ -12,10 +12,12 @@ class Project {
     var name: String?
     var date: String?
     var description: String?
+    var link: String?
     
-    init(_name: String, _date: String, _description: String) {
+    init(_name: String, _date: String, _description: String, _link: String?) {
         name = _name
         date = _date
         description = _description
+        link = _link
     }
 }

@@ -129,8 +129,10 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // MARK: - Collection View Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return resume?.count ?? 0
+        if let count = resume?.count {
+            return count - 1
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -196,7 +198,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 guard let projectsJsonArray = resume!["Projects"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
                 
                 for projectJson in projectsJsonArray {
-                    projects.append(Project(_name: projectJson["name"] as! String, _date: projectJson["date"] as! String, _description: projectJson["description"] as! String))
+                    projects.append(Project(_name: projectJson["name"] as! String, _date: projectJson["date"] as! String, _description: projectJson["description"] as! String, _link: projectJson["link"] as? String))
                 }
                 
                 cell.controller = self
