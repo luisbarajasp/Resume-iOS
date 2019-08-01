@@ -13,6 +13,15 @@ class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
     var skills: [Skill] = [] {
         didSet {
             collectionView.reloadData()
+            
+            if let superView = self.superview as? ContentView {
+                let height = collectionView.collectionViewLayout.collectionViewContentSize.height
+                
+                superView.skillsHeightConstraint.constant = height
+                superView.setNeedsLayout()
+            }
+            
+            
         }
     }
     

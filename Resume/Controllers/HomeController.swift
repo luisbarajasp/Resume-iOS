@@ -76,6 +76,8 @@ class HomeController: UIViewController {
         
         contentView.skills = skills
         
+        print(scrollView.contentSize)
+        
     }
     
     func setUpViews() {

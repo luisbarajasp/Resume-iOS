@@ -73,6 +73,8 @@ class ContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var skillsHeightConstraint: NSLayoutConstraint!
+    
     func setUpViews() {
         
         addSubview(summaryTitleLabel)
@@ -91,8 +93,10 @@ class ContentView: UIView {
         skillsTitleLabel.anchor(top: educationCollectionView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
         
         addSubview(skillsCollectionView)
-        skillsCollectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 330))
+        skillsCollectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
         
+        skillsHeightConstraint = NSLayoutConstraint(item: skillsCollectionView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
+        skillsHeightConstraint.isActive = true
         
     }
 }
