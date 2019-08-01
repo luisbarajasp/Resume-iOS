@@ -12,9 +12,9 @@ class EducationCollectionCell: UICollectionViewCell {
     
     var school: School? {
         didSet {
-            if let imageLink = school!.imageLink{
-                logoImageView.loadImageUsingCacheWithURLString(imageLink, placeHolder: nil)
-            }
+//            if let imageLink = school!.imageLink{
+//                logoImageView.loadImageUsingCacheWithURLString(imageLink, placeHolder: nil)
+//            }
             nameLabel.text = school?.name
             dateLabel.text = school?.date
             degreeLabel.text = school?.degree

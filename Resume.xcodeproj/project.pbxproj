@@ -30,10 +30,13 @@
 		A0951DA822F2C3D500ED2996 /* SectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */; };
 		A0951DAA22F357B900ED2996 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA922F357B900ED2996 /* NavigationView.swift */; };
 		A0951DAC22F362A500ED2996 /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DAB22F362A500ED2996 /* JobController.swift */; };
-		A0951DB022F3726800ED2996 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DAF22F3726800ED2996 /* File.swift */; };
+		A0951DB022F3726800ED2996 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DAF22F3726800ED2996 /* Project.swift */; };
 		A0951DB222F3739200ED2996 /* ProjectsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB122F3739200ED2996 /* ProjectsCollectionViewCell.swift */; };
 		A0951DB422F3740300ED2996 /* ProjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB322F3740300ED2996 /* ProjectCollectionCell.swift */; };
 		A0951DB622F374A200ED2996 /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB522F374A200ED2996 /* ProjectController.swift */; };
+		A0951DB822F376FF00ED2996 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB722F376FF00ED2996 /* Award.swift */; };
+		A0951DBA22F3776A00ED2996 /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */; };
+		A0951DBC22F377B100ED2996 /* AwardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,10 +65,13 @@
 		A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewCell.swift; sourceTree = "<group>"; };
 		A0951DA922F357B900ED2996 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		A0951DAB22F362A500ED2996 /* JobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
-		A0951DAF22F3726800ED2996 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		A0951DAF22F3726800ED2996 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		A0951DB122F3739200ED2996 /* ProjectsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0951DB322F3740300ED2996 /* ProjectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCollectionCell.swift; sourceTree = "<group>"; };
 		A0951DB522F374A200ED2996 /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
+		A0951DB722F376FF00ED2996 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +152,8 @@
 				A06917E822F1245400B9AE73 /* School.swift */,
 				A06917F022F153BB00B9AE73 /* Skill.swift */,
 				A0951DA322F2A25D00ED2996 /* Job.swift */,
-				A0951DAF22F3726800ED2996 /* File.swift */,
+				A0951DAF22F3726800ED2996 /* Project.swift */,
+				A0951DB722F376FF00ED2996 /* Award.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 				A0951DA722F2C3D500ED2996 /* SectionViewCell.swift */,
 				A0951DB122F3739200ED2996 /* ProjectsCollectionViewCell.swift */,
 				A0951DB322F3740300ED2996 /* ProjectCollectionCell.swift */,
+				A0951DB922F3776A00ED2996 /* AwardsCollectionViewCell.swift */,
+				A0951DBB22F377B100ED2996 /* AwardCollectionCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -265,21 +274,24 @@
 				A0951DB622F374A200ED2996 /* ProjectController.swift in Sources */,
 				A06917E122F0E04C00B9AE73 /* APIService.swift in Sources */,
 				A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */,
+				A0951DBA22F3776A00ED2996 /* AwardsCollectionViewCell.swift in Sources */,
 				A06917ED22F14EED00B9AE73 /* SkillsCollectionViewCell.swift in Sources */,
 				A0951DA822F2C3D500ED2996 /* SectionViewCell.swift in Sources */,
 				A06917D922F0D20600B9AE73 /* Extension.swift in Sources */,
 				A06917E922F1245400B9AE73 /* School.swift in Sources */,
 				A06917C822F0D19600B9AE73 /* HomeController.swift in Sources */,
+				A0951DBC22F377B100ED2996 /* AwardCollectionCell.swift in Sources */,
 				A06917E722F1226F00B9AE73 /* EducationCollectionCell.swift in Sources */,
 				A06917E322F0E38500B9AE73 /* HeaderButton.swift in Sources */,
 				A0951DA022F2A15700ED2996 /* EmploymentCollectionViewCell.swift in Sources */,
 				A0951DB222F3739200ED2996 /* ProjectsCollectionViewCell.swift in Sources */,
 				A0951DA622F2C3A800ED2996 /* SummaryViewCell.swift in Sources */,
 				A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */,
-				A0951DB022F3726800ED2996 /* File.swift in Sources */,
+				A0951DB022F3726800ED2996 /* Project.swift in Sources */,
 				A0951DA422F2A25D00ED2996 /* Job.swift in Sources */,
 				A0951DAC22F362A500ED2996 /* JobController.swift in Sources */,
 				A06917C622F0D19600B9AE73 /* AppDelegate.swift in Sources */,
+				A0951DB822F376FF00ED2996 /* Award.swift in Sources */,
 				A0951DA222F2A1CD00ED2996 /* EmploymentCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

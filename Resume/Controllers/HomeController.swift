@@ -22,6 +22,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let educationViewId = "educationViewId"
     let employmentViewId = "employmentViewId"
     let projectsViewId = "projectsViewId"
+    let awardsViewId = "awardsViewId"
     
     private var lastContentOffset: CGFloat = 0
     
@@ -42,6 +43,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cv.register(SkillsCollectionViewCell.self, forCellWithReuseIdentifier: skillsViewId)
         cv.register(EmploymentCollectionViewCell.self, forCellWithReuseIdentifier: employmentViewId)
         cv.register(ProjectsCollectionViewCell.self, forCellWithReuseIdentifier: projectsViewId)
+        cv.register(AwardsCollectionViewCell.self, forCellWithReuseIdentifier: awardsViewId)
         
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .white
@@ -212,12 +214,19 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 return cell
             case 6:
             // Awards
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: awardsViewId, for: indexPath) as! AwardsCollectionViewCell
                 
-                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
-                cell!.contact = contactJsonArray
+                guard let awardsJsonArray = resume!["Awards"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
                 
-                return cell!
+                var awards: [Award] = []
+                
+                for awardJson in awardsJsonArray {
+                    awards.append(Award(_name: awardJson["name"] as! String, _date: awardJson["date"] as! String, _description: awardJson["description"] as! String))
+                }
+                
+                cell.awards = awards
+                
+                return cell
             case 7:
             // Volunteering
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
