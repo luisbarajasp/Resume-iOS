@@ -14,6 +14,27 @@ class NavigationView: UIView {
     var githubUrl: String = ""
     var phoneUrl: String = ""
     
+    var controller: UIViewController? {
+        didSet {
+            if (controller as? HomeController) != nil {
+                isHome = true
+                
+            }else{
+                isHome = false
+                
+            }
+            setUpViews()
+        }
+    }
+    
+    lazy var backButton: UIButton = {
+        let b = UIButton()
+        b.addTarget(self, action: #selector(self.backButtonPressed), for: .touchDown)
+        b.setImage(UIImage(named: "back"), for: .normal)
+        b.imageView?.contentMode = .scaleAspectFit
+        return b
+    }()
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "me")
@@ -57,11 +78,19 @@ class NavigationView: UIView {
         return b
     }()
     
-    var isHome = true
+    private var isHome = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUpViews()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setUpViews() {
+        backgroundColor = .white
         
         if isHome {
             
@@ -83,15 +112,17 @@ class NavigationView: UIView {
             
             addSubview(emailButton)
             emailButton.anchor(top: nameLabel.topAnchor, leading: nil, bottom: nameLabel.bottomAnchor, trailing: githubButton.leadingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20), size: CGSize(width: 20, height: 0))
+        }else{
+            addSubview(backButton)
+            backButton.anchor(top: safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 0), size: CGSize(width: 30, height: 0))
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setUpViews() {
-        backgroundColor = .white
+    @objc
+    func backButtonPressed() {
+        if let cont = controller as? JobController {
+            cont.navigationBackPressed()
+        }
     }
     
     @objc

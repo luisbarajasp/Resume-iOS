@@ -10,6 +10,8 @@ import UIKit
 
 class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var controller: HomeController!
+    
     var jobs: [Job] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -77,6 +79,6 @@ class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(jobs[indexPath.row].name)
+        controller.didSelectJob(jobs[indexPath.row])
     }
 }

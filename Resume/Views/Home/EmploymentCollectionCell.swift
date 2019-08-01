@@ -59,7 +59,7 @@ class EmploymentCollectionCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         label.sizeToFit()
-        label.textAlignment = .right
+        
         return label
     }()
     
