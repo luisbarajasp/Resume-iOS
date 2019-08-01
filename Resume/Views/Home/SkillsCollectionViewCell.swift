@@ -60,10 +60,10 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
         return cv
     }()
     
-    let cellColors: [[UIColor]] = [[UIColor(red: 252, green: 131, blue: 123), UIColor(red: 252, green: 55, blue: 87)],
-                                   [UIColor(red: 253, green: 151, blue: 55), UIColor(red: 248, green: 133, blue: 78)],
-                                   [UIColor(red: 56, green: 209, blue: 120), UIColor(red: 51, green: 184, blue: 100)],
-                                   [UIColor(red: 9, green: 168, blue: 224), UIColor(red: 34, green: 230, blue: 154)]]
+    let cellColors: [[UIColor]] = [[UIColor(red: 252, green: 85, blue: 103), UIColor(red: 252, green: 55, blue: 87)],
+                                   [UIColor(red: 253, green: 143, blue: 75), UIColor(red: 248, green: 133, blue: 78)],
+                                   [UIColor(red: 56, green: 197, blue: 114), UIColor(red: 51, green: 184, blue: 100)],
+                                   [UIColor(red: 9, green: 168, blue: 224), UIColor(red: 8, green: 153, blue: 211)]]
     
     override func setUpViews() {
         contentView.addSubview(skillsTitleLabel)
