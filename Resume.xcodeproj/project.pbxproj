@@ -23,6 +23,7 @@
 		A06917ED22F14EED00B9AE73 /* SkillsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */; };
 		A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */; };
 		A06917F122F153BB00B9AE73 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917F022F153BB00B9AE73 /* Skill.swift */; };
+		A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionView.swift; sourceTree = "<group>"; };
 		A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionCell.swift; sourceTree = "<group>"; };
 		A06917F022F153BB00B9AE73 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				A06917E622F1226F00B9AE73 /* EducationCollectionCell.swift */,
 				A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */,
 				A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */,
+				A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				A06917C822F0D19600B9AE73 /* HomeController.swift in Sources */,
 				A06917E722F1226F00B9AE73 /* EducationCollectionCell.swift in Sources */,
 				A06917E322F0E38500B9AE73 /* HeaderButton.swift in Sources */,
+				A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */,
 				A06917C622F0D19600B9AE73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

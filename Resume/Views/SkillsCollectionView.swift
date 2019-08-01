@@ -10,14 +10,15 @@ import UIKit
 
 class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var skills: [Skill]? {
+    var skills: [Skill] = [] {
         didSet {
-            
             collectionView.reloadData()
         }
     }
     
     let skillsCellId = "skillsCellId"
+    
+    let skillsHeaderId = "skillsHeaderId"
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +29,8 @@ class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
         cv.dataSource = self
         cv.showsHorizontalScrollIndicator = false
         cv.showsVerticalScrollIndicator = false
-        cv.register(EducationCollectionCell.self, forCellWithReuseIdentifier: skillsCellId)
+        cv.register(SkillsCollectionCell.self, forCellWithReuseIdentifier: skillsCellId)
+        cv.register(SkillsCollectionHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: skillsHeaderId)
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .white
         cv.isPagingEnabled = false
@@ -49,26 +51,54 @@ class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
     }
     
     func setUpViews() {
-        
+        addSubview(collectionView)
+        collectionView.fillSuperview()
     }
     
     // MARK: - Collection View Methods
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return skills.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return skills![section].skills!.count
+        if skills.count > 0 {
+            return skills[section].skills.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsCellId, for: indexPath) as! SkillsCollectionCell
         
         
-        cell.skill = skills![indexPath.section].skills![indexPath.row]
+        cell.skill = skills[indexPath.section].skills[indexPath.row]
+        
+        cell.colors = [UIColor(red: 255, green: 146, blue: 140),UIColor(red: 254, green: 129, blue: 137)]
+        
         return cell
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 150)
+        return CGSize(width: collectionView.bounds.width / 2 - 10, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: skillsHeaderId, for: indexPath) as? SkillsCollectionHeaderCell
+            header?.textLabel.text = skills[indexPath.section].name
+            
+            return header!
+        }
+        
+        assert(false, "Invalid element type")
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 class Skill {
     
     var name: String!
-    var skills: [String]?
+    var skills: [String] = []
     
     init(_name: String, _skills: [String]) {
         name = _name

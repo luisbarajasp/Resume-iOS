@@ -74,6 +74,7 @@ class ContentView: UIView {
     }
     
     func setUpViews() {
+        
         addSubview(summaryTitleLabel)
         summaryTitleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
         
@@ -88,5 +89,10 @@ class ContentView: UIView {
         
         addSubview(skillsTitleLabel)
         skillsTitleLabel.anchor(top: educationCollectionView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
+        
+        addSubview(skillsCollectionView)
+        skillsCollectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 330))
+        
+        
     }
 }

@@ -33,13 +33,14 @@ class SkillsCollectionCell: UICollectionViewCell {
     let skillLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .white
         label.sizeToFit()
         return label
     }()
     
     let containerView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         view.clipsToBounds = true
         return view

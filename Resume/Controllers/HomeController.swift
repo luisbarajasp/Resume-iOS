@@ -83,7 +83,7 @@ class HomeController: UIViewController {
         view.addSubview(scrollView)
         scrollView.fillSuperview()
         
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         scrollView.addSubview(parentView)
         parentView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor)
