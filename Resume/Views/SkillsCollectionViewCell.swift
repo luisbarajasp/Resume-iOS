@@ -10,12 +10,17 @@ import UIKit
 
 class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var isFirstLoad = true
+    
     var skills: [Skill] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                
-                self.collectionView.layoutIfNeeded()
+            if isFirstLoad {
+                isFirstLoad = false
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    
+                    self.collectionView.layoutIfNeeded()
+                }
             }
             
             
@@ -88,9 +93,8 @@ class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICol
         
         cell.skill = skills[indexPath.section].skills[indexPath.row]
         
-        cell.colors = cellColors[indexPath.section]
         
-        print("\(indexPath.section) \(skills[indexPath.section].skills[indexPath.row])")
+        cell.colors = cellColors[indexPath.section]
         
         return cell
     }
