@@ -24,6 +24,9 @@
 		A06917EF22F1503200B9AE73 /* SkillsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */; };
 		A06917F122F153BB00B9AE73 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06917F022F153BB00B9AE73 /* Skill.swift */; };
 		A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */; };
+		A0951DA022F2A15700ED2996 /* EmploymentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951D9F22F2A15700ED2996 /* EmploymentCollectionView.swift */; };
+		A0951DA222F2A1CD00ED2996 /* EmploymentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA122F2A1CD00ED2996 /* EmploymentCollectionCell.swift */; };
+		A0951DA422F2A25D00ED2996 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0951DA322F2A25D00ED2996 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionCell.swift; sourceTree = "<group>"; };
 		A06917F022F153BB00B9AE73 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionHeaderCell.swift; sourceTree = "<group>"; };
+		A0951D9F22F2A15700ED2996 /* EmploymentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentCollectionView.swift; sourceTree = "<group>"; };
+		A0951DA122F2A1CD00ED2996 /* EmploymentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentCollectionCell.swift; sourceTree = "<group>"; };
+		A0951DA322F2A25D00ED2996 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 				A06917EC22F14EED00B9AE73 /* SkillsCollectionView.swift */,
 				A06917EE22F1503200B9AE73 /* SkillsCollectionCell.swift */,
 				A0951D9D22F274C800ED2996 /* SkillsCollectionHeaderCell.swift */,
+				A0951D9F22F2A15700ED2996 /* EmploymentCollectionView.swift */,
+				A0951DA122F2A1CD00ED2996 /* EmploymentCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 			children = (
 				A06917E822F1245400B9AE73 /* School.swift */,
 				A06917F022F153BB00B9AE73 /* Skill.swift */,
+				A0951DA322F2A25D00ED2996 /* Job.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,8 +232,11 @@
 				A06917C822F0D19600B9AE73 /* HomeController.swift in Sources */,
 				A06917E722F1226F00B9AE73 /* EducationCollectionCell.swift in Sources */,
 				A06917E322F0E38500B9AE73 /* HeaderButton.swift in Sources */,
+				A0951DA022F2A15700ED2996 /* EmploymentCollectionView.swift in Sources */,
 				A0951D9E22F274C800ED2996 /* SkillsCollectionHeaderCell.swift in Sources */,
+				A0951DA422F2A25D00ED2996 /* Job.swift in Sources */,
 				A06917C622F0D19600B9AE73 /* AppDelegate.swift in Sources */,
+				A0951DA222F2A1CD00ED2996 /* EmploymentCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

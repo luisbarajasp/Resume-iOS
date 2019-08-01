@@ -28,6 +28,12 @@ class ContentView: UIView {
         }
     }
     
+    var jobs: [Job] = [] {
+        didSet {
+            employmentCollectionView.jobs = jobs
+        }
+    }
+    
     let summaryTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
@@ -64,6 +70,16 @@ class ContentView: UIView {
     
     let skillsCollectionView = SkillsCollectionView()
     
+    let employmentTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+        label.text = "Employment"
+        label.sizeToFit()
+        return label
+    }()
+    
+    let employmentCollectionView = EmploymentCollectionView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -98,5 +114,15 @@ class ContentView: UIView {
         skillsHeightConstraint = NSLayoutConstraint(item: skillsCollectionView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
         skillsHeightConstraint.isActive = true
         
+        addSubview(employmentTitleLabel)
+        employmentTitleLabel.anchor(top: skillsCollectionView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
+        
+        addSubview(employmentCollectionView)
+        employmentCollectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 140))
+        
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        print("kjfalkj")
     }
 }

@@ -76,6 +76,16 @@ class HomeController: UIViewController {
         
         contentView.skills = skills
         
+        var jobs: [Job] = []
+        
+        guard let jobsJsonArray = resume!["Employment"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
+        
+        for jobJson in jobsJsonArray {
+            jobs.append(Job(_name: jobJson["name"] as! String,  _city: jobJson["city"] as! String, _company: jobJson["company"] as! String, _date: jobJson["date"] as! String, _description: jobJson["description"] as! String))
+        }
+        
+        contentView.jobs = jobs
+        
     }
     
     func setUpViews() {
