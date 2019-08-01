@@ -8,9 +8,7 @@
 
 import UIKit
 
-class HeaderView: UIView {
-    
-    var controller: HomeController!
+class HeaderViewCell: SectionViewCell {
     
     var contact: [[String: AnyObject]]? {
         didSet {
@@ -71,47 +69,37 @@ class HeaderView: UIView {
     let githubButton = HeaderButton()
     let phoneButton = HeaderButton()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override func setUpViews() {
+        super.setUpViews()
         
-        setUpViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func setUpViews() {
-//        addSubview(backgroundImageView)
-//        backgroundImageView.fillSuperview()
-        
-        addSubview(profileIVContainer)
-        profileIVContainer.anchor(top: safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0), size: CGSize(width: 100, height: 100))
-        profileIVContainer.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        contentView.addSubview(profileIVContainer)
+        profileIVContainer.anchor(top: contentView.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), size: CGSize(width: 100, height: 100))
+        profileIVContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
         profileIVContainer.addSubview(profileImageView)
         profileImageView.fillSuperview()
         
-        addSubview(nameLabel)
+        contentView.addSubview(nameLabel)
         nameLabel.anchor(top: profileImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
-        nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
         emailButton.type = 0
         githubButton.type = 1
         phoneButton.type = 2
         
-        addSubview(emailButton)
+        contentView.addSubview(emailButton)
         emailButton.anchor(top: nameLabel.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 20))
-        emailButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        emailButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        addSubview(githubButton)
+        contentView.addSubview(githubButton)
         githubButton.anchor(top: emailButton.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 20))
-        githubButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        githubButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
-        addSubview(phoneButton)
+        contentView.addSubview(phoneButton)
         phoneButton.anchor(top: githubButton.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 20))
-        phoneButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        phoneButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
+        contentView.bottomAnchor.constraint(equalTo: phoneButton.bottomAnchor, constant: 10).isActive = true
     }
 }

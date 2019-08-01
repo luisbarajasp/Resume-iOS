@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmploymentCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class EmploymentCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var jobs: [Job] = [] {
         didSet {
@@ -17,6 +17,14 @@ class EmploymentCollectionView: UIView, UICollectionViewDelegate, UICollectionVi
     }
     
     let cellId = "cellId"
+    
+    let employmentTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+        label.text = "Employment"
+        label.sizeToFit()
+        return label
+    }()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,18 +44,14 @@ class EmploymentCollectionView: UIView, UICollectionViewDelegate, UICollectionVi
         return cv
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setUpViews() {
-        addSubview(collectionView)
-        collectionView.fillSuperview()
+    override func setUpViews() {
+        contentView.addSubview(employmentTitleLabel)
+        employmentTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
+        
+        contentView.addSubview(collectionView)
+        collectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        
+        contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
     }
     
     // MARK: - CollectionView Methods

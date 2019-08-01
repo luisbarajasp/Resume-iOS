@@ -6,7 +6,7 @@
 //  Copyright © 2019 Luis Barajas. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 
 class ContentView: UIView {
     
@@ -50,33 +50,14 @@ class ContentView: UIView {
         return label
     }()
     
-    let educationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.text = "Education"
-        label.sizeToFit()
-        return label
-    }()
+    
     
     let educationCollectionView = EducationCollectionView()
     
-    let skillsTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.text = "Skills"
-        label.sizeToFit()
-        return label
-    }()
+    
     
     let skillsCollectionView = SkillsCollectionView()
     
-    let employmentTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        label.text = "Employment"
-        label.sizeToFit()
-        return label
-    }()
     
     let employmentCollectionView = EmploymentCollectionView()
     
@@ -93,14 +74,7 @@ class ContentView: UIView {
     
     func setUpViews() {
         
-        addSubview(summaryTitleLabel)
-        summaryTitleLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
-        
-        addSubview(summaryLabel)
-        summaryLabel.anchor(top: summaryTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
-        
-        addSubview(educationTitleLabel)
-        educationTitleLabel.anchor(top: summaryLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20))
+       
         
         addSubview(educationCollectionView)
         educationCollectionView.anchor(top: educationTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15), size: CGSize(width: 0, height: 330))
@@ -121,8 +95,4 @@ class ContentView: UIView {
         employmentCollectionView.anchor(top: employmentTitleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 140))
         
     }
-    
-    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        print("kjfalkj")
-    }
-}
+}*/

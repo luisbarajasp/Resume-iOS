@@ -8,23 +8,22 @@
 
 import UIKit
 
-class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SkillsCollectionViewCell: SectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var skills: [Skill] = [] {
         didSet {
             collectionView.reloadData()
             
-            if let superView = self.superview as? ContentView {
-                let height = collectionView.collectionViewLayout.collectionViewContentSize.height
-                
-                superView.skillsHeightConstraint.constant = height
-                superView.setNeedsLayout()
-                
-            }
-            
-            
         }
     }
+    
+    let skillsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
+        label.text = "Skills"
+        label.sizeToFit()
+        return label
+    }()
     
     let skillsCellId = "skillsCellId"
     
@@ -56,18 +55,14 @@ class SkillsCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
                                    [UIColor(red: 56, green: 209, blue: 120), UIColor(red: 51, green: 184, blue: 100)],
                                    [UIColor(red: 9, green: 168, blue: 224), UIColor(red: 34, green: 230, blue: 154)]]
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setUpViews() {
-        addSubview(collectionView)
-        collectionView.fillSuperview()
+    override func setUpViews() {
+        contentView.addSubview(skillsTitleLabel)
+        skillsTitleLabel.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20))
+        
+        contentView.addSubview(collectionView)
+        collectionView.anchor(top: skillsTitleLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: 15))
+        
+        contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor).isActive = true
     }
     
     // MARK: - Collection View Methods

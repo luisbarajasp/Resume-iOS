@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var resume: [String: AnyObject]? {
         didSet {
@@ -16,11 +16,37 @@ class HomeController: UIViewController {
         }
     }
     
-    var scrollView = UIScrollView()
-    var parentView = UIView()
+    let headerViewId = "headerViewId"
+    let summaryViewId = "summaryViewId"
+    let skillsViewId = "skillsViewId"
+    let educationViewId = "educationViewId"
+    let employmentViewId = "employmentViewId"
     
-    var headerView = HeaderView()
-    var contentView = ContentView()
+    lazy var parentView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        layout.estimatedItemSize = CGSize(width: self.view.bounds.width, height: 10)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.delegate = self
+        cv.dataSource = self
+        cv.showsHorizontalScrollIndicator = false
+        cv.showsVerticalScrollIndicator = false
+        
+        cv.register(HeaderViewCell.self, forCellWithReuseIdentifier: headerViewId)
+        cv.register(SummaryViewCell.self, forCellWithReuseIdentifier: summaryViewId)
+        cv.register(EducationCollectionViewCell.self, forCellWithReuseIdentifier: educationViewId)
+        cv.register(SkillsCollectionViewCell.self, forCellWithReuseIdentifier: skillsViewId)
+        cv.register(EmploymentCollectionViewCell.self, forCellWithReuseIdentifier: employmentViewId)
+        
+        cv.showsVerticalScrollIndicator = false
+        cv.backgroundColor = .white
+        cv.isPagingEnabled = false
+        
+        cv.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+        
+        return cv
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,63 +78,22 @@ class HomeController: UIViewController {
     
     // MARK: - Update UI
     private func updateValues() {
-        guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
-        headerView.contact = contactJsonArray
-        contentView.summary = resume!["Summary"] as? String
         
-        guard let schoolsJsonArray = resume!["Education"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
+        parentView.reloadData()
         
-        var schools: [School] = []
+        /*
         
-        for schoolJson in schoolsJsonArray {
-            schools.append(School(_imageLink: schoolJson["imageLink"] as! String, _name: schoolJson["name"] as! String, _date: schoolJson["date"] as! String, _degree: schoolJson["degree"] as! String, _notes: schoolJson["notes"] as! String))
-        }
         
-        contentView.schools = schools
         
-        var skills: [Skill] = []
-        
-        guard let skillsJsonArray = resume!["Skills"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
-        
-        for skillJson in skillsJsonArray {
-            skills.append(Skill(_name: skillJson["name"] as! String, _skills: skillJson["items"] as! [String]))
-        }
-        
-        contentView.skills = skills
-        
-        var jobs: [Job] = []
-        
-        guard let jobsJsonArray = resume!["Employment"] as? [[String: AnyObject]] else { return showAlertWith(title: "Error", message: "Invalid JSON")}
-        
-        for jobJson in jobsJsonArray {
-            jobs.append(Job(_name: jobJson["name"] as! String,  _city: jobJson["city"] as! String, _company: jobJson["company"] as! String, _date: jobJson["date"] as! String, _description: jobJson["description"] as! String))
-        }
-        
-        contentView.jobs = jobs
+        */
         
     }
     
     func setUpViews() {
         
-        view.addSubview(scrollView)
-        scrollView.fillSuperview()
-        
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        scrollView.addSubview(parentView)
-        parentView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor)
-        
-        parentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        parentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
-        
-        parentView.addSubview(headerView)
-        headerView.controller = self
-        headerView.anchor(top: parentView.topAnchor, leading: parentView.leadingAnchor, bottom: nil, trailing: parentView.trailingAnchor, size: CGSize(width: 0, height: 325))
-        
-        parentView.addSubview(contentView)
-        contentView.anchor(top: headerView.bottomAnchor, leading: parentView.safeAreaLayoutGuide.leadingAnchor, bottom: parentView.safeAreaLayoutGuide.bottomAnchor, trailing: parentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
-        
-        contentView.setContentCompressionResistancePriority(.required, for: .vertical)
+        view.addSubview(parentView)
+        parentView.fillSuperview()
+
     }
     
     // MARK: - Alerts
@@ -122,9 +107,120 @@ class HomeController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    override func viewDidLayoutSubviews() {
-        // FIX: fixed height for contentsize scrollview, this is a nasty way to solve the error with scrollview not growing to content
-        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width, height: 2000)
+    // MARK: - Collection View Methods
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return resume?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.row {
+            case 0:
+            // Header
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as! HeaderViewCell
+                
+                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                cell.contact = contactJsonArray
+                
+                return cell
+            case 1:
+            // Summary
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: summaryViewId, for: indexPath) as! SummaryViewCell
+                cell.summary = resume!["Summary"] as? String
+                
+                return cell
+                
+                
+            
+            case 2:
+            // Education
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: educationViewId, for: indexPath) as! EducationCollectionViewCell
+                
+                guard let schoolsJsonArray = resume!["Education"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                var schools: [School] = []
+                
+                for schoolJson in schoolsJsonArray {
+                    schools.append(School(_imageLink: schoolJson["imageLink"] as! String, _name: schoolJson["name"] as! String, _date: schoolJson["date"] as! String, _degree: schoolJson["degree"] as! String, _notes: schoolJson["notes"] as! String))
+                }
+                
+                cell.schools = schools
+                
+                return cell
+            case 3:
+            // Skills
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: skillsViewId, for: indexPath) as! SkillsCollectionViewCell
+                
+                var skills: [Skill] = []
+                
+                guard let skillsJsonArray = resume!["Skills"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                for skillJson in skillsJsonArray {
+                    skills.append(Skill(_name: skillJson["name"] as! String, _skills: skillJson["items"] as! [String]))
+                }
+                
+                cell.skills = skills
+                
+                return cell
+            case 4:
+            // Employment
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: employmentViewId, for: indexPath) as! EmploymentCollectionViewCell
+                
+                var jobs: [Job] = []
+                
+                guard let jobsJsonArray = resume!["Employment"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                
+                for jobJson in jobsJsonArray {
+                    jobs.append(Job(_name: jobJson["name"] as! String,  _city: jobJson["city"] as! String, _company: jobJson["company"] as! String, _date: jobJson["date"] as! String, _description: jobJson["description"] as! String))
+                }
+                
+                cell.jobs = jobs
+                
+                return cell
+            case 5:
+            // Projects
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                
+                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                cell!.contact = contactJsonArray
+                
+                return cell!
+            case 6:
+            // Awards
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                
+                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                cell!.contact = contactJsonArray
+                
+                return cell!
+            case 7:
+            // Volunteering
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                
+                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                cell!.contact = contactJsonArray
+                
+                return cell!
+            case 8:
+            // Languages
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+                
+                guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+                cell!.contact = contactJsonArray
+                
+                return cell!
+            default:
+            break
+            // Nothing
+            
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerViewId, for: indexPath) as? HeaderViewCell
+        
+        guard let contactJsonArray = resume!["Contact"] as? [[String: AnyObject]] else { assert(false, "Invalid JSON")}
+        cell!.contact = contactJsonArray
+        
+        return cell!
     }
 
 }
